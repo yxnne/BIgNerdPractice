@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">BIgNerdPractice</string>
+    <string name="btn_false">FALSE</string>
+    <string name="btn_true">TRUE</string>
+    <string name="btn_next">NEXT</string>
+    <string name="btn_see_answer">SEE ANSWER</string>
+
+    <string name="qustion_1">Your Name is Yxnne?</string>
+    <string name="qustion_2">You are Nerd?</string>
+    <string name="qustion_3">You have some Trouble?</string>
+    <string name="qustion_4">You are a Real Man?</string>
+    <string name="toast_right">YES!YES! </string>
+    <string name="toast_wrong">Nnnnop！</string>
+    <string name="ensure_check">You sure to check?</string>
+    <string name="btn_sure">SURE</string>
+    <string name="answer_right">Answer is TRUE!</string>
+    <string name="answer_wrong">Answer is FALSE!</string>
+    <string name="you_are_cheater">You Cheater Man!</string>
+</resources>
