@@ -9,9 +9,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".activity.CrimeActivity">
 
         </activity>
-        <activity android:name=".CrimeActivity">
+        <activity android:name=".activity.CrimeListActivty">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
