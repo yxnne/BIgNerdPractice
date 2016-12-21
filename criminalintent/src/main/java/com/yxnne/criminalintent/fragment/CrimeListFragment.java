@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.yxnne.criminalintent.CrimeLab;
 import com.yxnne.criminalintent.R;
 import com.yxnne.criminalintent.activity.CrimeActivity;
+import com.yxnne.criminalintent.activity.CrimePagerActivity;
 import com.yxnne.criminalintent.entity.Crime;
 
 import java.util.List;
@@ -95,7 +96,7 @@ public class CrimeListFragment extends Fragment{
         @Override
         public void onClick(View v) {
             Intent intent =
-                    CrimeActivity.newIntent(getActivity(),mCrime.getId());
+                    CrimePagerActivity.newIntent(getActivity(),mCrime.getId());
             Toast.makeText(getActivity(),mCrime.getId().toString(),Toast.LENGTH_SHORT)
                     .show();
             startActivity(intent);

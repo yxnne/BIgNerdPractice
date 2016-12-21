@@ -51,7 +51,7 @@ public class CrimeFragment extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCrime = new Crime();
+        //mCrime = new Crime();
 
         //直接获取activity的intent 参数，但是这样会破坏封装性
         //就是成了由某一个特殊的activity托管的了
