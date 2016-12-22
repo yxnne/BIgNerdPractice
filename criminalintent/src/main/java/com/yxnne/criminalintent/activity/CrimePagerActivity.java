@@ -2,6 +2,7 @@ package com.yxnne.criminalintent.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -13,6 +14,7 @@ import com.yxnne.criminalintent.CrimeLab;
 import com.yxnne.criminalintent.R;
 import com.yxnne.criminalintent.entity.Crime;
 import com.yxnne.criminalintent.fragment.CrimeFragment;
+import com.yxnne.criminalintent.fragment.CrimeListFragment;
 
 import java.util.List;
 import java.util.UUID;
@@ -63,4 +65,6 @@ public class CrimePagerActivity extends AppCompatActivity {
         }
 
     }
+
+
 }

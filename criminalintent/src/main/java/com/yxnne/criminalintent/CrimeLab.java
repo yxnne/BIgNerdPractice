@@ -28,6 +28,11 @@ public class CrimeLab {
         mCrimes = new ArrayList<>();
 
         //fake data
+        //genFakeData();
+
+    }
+
+    private void genFakeData() {
         for(int i = 0 ;i < 100; i++){
             Crime crime = new Crime();
             crime.setTittle("Crime #" + i);
@@ -52,5 +57,13 @@ public class CrimeLab {
             }
         }
         return null;
+    }
+
+    /**
+     * 添加一个Crime
+     * @param c 添加c到list mCrimes里面
+     */
+    public void addCrime(Crime c){
+        mCrimes.add(c);
     }
 }

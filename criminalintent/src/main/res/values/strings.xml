@@ -5,4 +5,10 @@
     <string name="crime_details_lable">Details</string>
     <string name="solved_lable">Solved</string>
     <string name="data_picker_tittle">Date of Crime</string>
+
+    <string name="new_crime">New Crime</string>
+    <string name="show_subtittle">Show Subtittle</string>
+    <string name="hide_subtittle">Hide Subtittle</string>
+    <string name="subtittle_format">%1$d crimes</string>
+
 </resources>
