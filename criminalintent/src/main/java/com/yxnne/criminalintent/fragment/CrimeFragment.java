@@ -71,6 +71,13 @@ public class CrimeFragment extends Fragment{
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        //更新下数据库里面的数据
+        CrimeLab.get(getActivity()).updateCrime(mCrime);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -17,8 +17,11 @@ public class Crime {
     private boolean mSolved;
 
     public Crime(){
+        this( UUID.randomUUID());
+    }
+    public Crime(UUID id){
         //随机生成通用唯一标示码
-        mId = UUID.randomUUID();
+        mId = id;
         //时间
         mDate = new Date();
     }
