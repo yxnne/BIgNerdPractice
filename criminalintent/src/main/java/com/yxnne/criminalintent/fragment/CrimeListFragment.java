@@ -1,5 +1,6 @@
 package com.yxnne.criminalintent.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -30,10 +31,32 @@ import java.util.List;
  */
 
 public class CrimeListFragment extends Fragment{
+
     private static final String SAVED_SUBTITTLE_VISIBLE = "subtittle";
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
     private boolean mSubTittleVisible;
+
+    private Callbacks mCallbacks;
+
+    /**
+     * 当由activity托管时应该实现的接口
+     */
+    public interface Callbacks{
+        void onCrimeSelected(Crime crime);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCallbacks = (Callbacks) context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,7 +94,7 @@ public class CrimeListFragment extends Fragment{
         outState .putBoolean(SAVED_SUBTITTLE_VISIBLE,mSubTittleVisible);
     }
 
-    private void updateUI() {
+    public void updateUI() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
         if(mAdapter == null){
@@ -116,11 +139,12 @@ public class CrimeListFragment extends Fragment{
 
         @Override
         public void onClick(View v) {
-            Intent intent =
-                    CrimePagerActivity.newIntent(getActivity(),mCrime.getId());
-            Toast.makeText(getActivity(),mCrime.getId().toString(),Toast.LENGTH_SHORT)
-                    .show();
-            startActivity(intent);
+//            Intent intent =
+//                    CrimePagerActivity.newIntent(getActivity(),mCrime.getId());
+//            Toast.makeText(getActivity(),mCrime.getId().toString(),Toast.LENGTH_SHORT)
+//                    .show();
+//            startActivity(intent);
+            mCallbacks.onCrimeSelected(mCrime);
         }
     }
 
@@ -173,9 +197,11 @@ public class CrimeListFragment extends Fragment{
             case R.id.meue_item_new_crime:
                 Crime crime = new Crime();
                 CrimeLab.get(getActivity()).addCrime(crime);
-                Intent intent = CrimePagerActivity
-                        .newIntent(getActivity(),crime.getId());
-                startActivity(intent);
+//                Intent intent = CrimePagerActivity
+//                        .newIntent(getActivity(),crime.getId());
+//                startActivity(intent);
+                updateUI();
+                mCallbacks.onCrimeSelected(crime);
                 return true;
             case R.id.menu_item_show_subtittle:
                 mSubTittleVisible = !mSubTittleVisible;

@@ -1,6 +1,7 @@
 package com.yxnne.criminalintent.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -61,6 +62,15 @@ public class CrimeFragment extends Fragment{
     private CheckBox mSolvedCheckBox;
 
     private File mPhotoFile;
+    private CrimeFragment.Callbacks mCallbacks;
+
+
+    /**
+     * 提供托管activity的回调接口
+     */
+    public interface Callbacks{
+        void onCrimeUpdated(Crime crime);
+    }
 
     /**
      * 创建本Fragment使用静态方法，解掉和Activity的耦合
@@ -74,6 +84,18 @@ public class CrimeFragment extends Fragment{
         CrimeFragment fragment = new CrimeFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCallbacks = (Callbacks) context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
     }
 
     @Override
@@ -116,6 +138,7 @@ public class CrimeFragment extends Fragment{
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //给模型层赋值
                 mCrime.setTittle(s.toString());
+                updateCrime();
             }
 
             @Override
@@ -182,6 +205,7 @@ public class CrimeFragment extends Fragment{
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mCrime.setSolved(isChecked);
+                updateCrime();
             }
         });
 
@@ -220,6 +244,7 @@ public class CrimeFragment extends Fragment{
                     .getSerializableExtra(DataPickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
             updateDate();
+            updateCrime();
         }
 
         else if(requestCode == REQUEST_CONTACT && data != null){
@@ -237,6 +262,7 @@ public class CrimeFragment extends Fragment{
                 String suspect = c.getString(0);
                 mCrime.setSuspect(suspect);
                 mSuspectButton.setText(suspect);
+                updateCrime();
             }finally{
                 c.close();
 
@@ -245,6 +271,7 @@ public class CrimeFragment extends Fragment{
 
         else if(requestCode == REQUEST_PHOTO){
             updatePhotoView();
+            updateCrime();
         }
 
 
@@ -288,5 +315,8 @@ public class CrimeFragment extends Fragment{
             mPhoteView.setImageBitmap(bitmap);
         }
     }
-
+    private void updateCrime(){
+        CrimeLab.get(getActivity()).updateCrime(mCrime);
+        mCallbacks.onCrimeUpdated(mCrime);
+    }
 }
