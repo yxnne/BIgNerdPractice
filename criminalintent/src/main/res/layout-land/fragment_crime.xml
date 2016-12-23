@@ -6,20 +6,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               tools:context="com.yxnne.criminalintent.MainActivity">
-
-    <TextView
-        style="?android:listSeparatorTextViewStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crime_tittle_lable"/>
-
-    <EditText
-        android:id="@+id/crime_tittle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="@string/crime_tittle_hint"/>
+    <include layout="@layout/view_camera_and_tittle"/>
 
     <TextView
         android:layout_width="match_parent"

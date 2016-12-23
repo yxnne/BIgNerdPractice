@@ -4,11 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 
 import com.yxnne.criminalintent.db.CrimeBaseHelper;
 import com.yxnne.criminalintent.db.CrimeCursorWrapper;
 import com.yxnne.criminalintent.entity.Crime;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -139,5 +141,17 @@ public class CrimeLab {
                 null //orderby
                 );
         return new CrimeCursorWrapper(cursor);
+    }
+    /**
+     * 定位图片文件
+     */
+    public File getPhotoFile(Crime crime){
+        File externalFilesDir = mContext
+                .getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        if(externalFilesDir == null){
+            return null;
+        }
+        //新建文件指针
+        return new File(externalFilesDir,crime.getPhotoFileName());
     }
 }
