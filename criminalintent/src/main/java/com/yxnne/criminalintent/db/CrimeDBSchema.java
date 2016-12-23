@@ -17,6 +17,7 @@ public class CrimeDBSchema {
             public static final String TITTLE = "tittle";
             public static final String DATE = "date";
             public static final String SOVLED = "sovled";
+            public static final String SUSPECT = "suspect";
         }
     }
 }

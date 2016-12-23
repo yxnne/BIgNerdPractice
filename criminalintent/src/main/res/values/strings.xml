@@ -10,5 +10,16 @@
     <string name="show_subtittle">Show Subtittle</string>
     <string name="hide_subtittle">Hide Subtittle</string>
     <string name="subtittle_format">%1$d crimes</string>
+    <string name="crime_suspect_text">CHOOSE SUSPECT</string>
+    <string name="crime_reaport_text">SEND REPORT</string>
+
+
+    <string name="crime_report">%1$s! The crime is discovered on %2$s. %3$s, and %4$s</string>
+    <string name="crime_report_solved">The case is solved</string>
+    <string name="crime_report_unsolved">The case is not solved</string>
+    <string name="crime_report_no_suspect">There is no suspect.</string>
+    <string name="crime_report_suspect">The suspect is %1$s</string>
+    <string name="crime_report_subject">CriminalIntent Crime Report</string>
+    <string name="send_report">Send crime report via</string>
 
 </resources>
